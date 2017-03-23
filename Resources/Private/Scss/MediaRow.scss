@@ -3,8 +3,11 @@ $mediarow-class-row: dotpulse-mediarow--row !default;
 $mediarow-class-col: dotpulse-mediarow--col !default;
 $mediarow-gutter: 30px !default;
 
-
 @media (min-width: $mediarow-breakpoint) {
+	.dotpulse-mediarow-container + .dotpulse-mediarow-container  {
+		margin-top: 1.5rem;
+	}
+
 	.#{$mediarow-class-row} {
 		display: flex;
 		flex-wrap: nowrap;

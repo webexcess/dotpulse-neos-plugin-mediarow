@@ -12,7 +12,7 @@ TYPO3:
 Dotpulse:
   MediaRow:
     baseWith: 2560
-    includeCSS: TRUE
+    includeCSS: FALSE
     class:
       container: container
       row: dotpulse-mediarow--row
