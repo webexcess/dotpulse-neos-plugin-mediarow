@@ -1,0 +1,22 @@
+{
+    "name": "dotpulse/mediarow",
+    "type": "typo3-flow-plugin",
+    "description": "Shows media in a row. Use CSS-Flexbox",
+    "version": "2.0.1",
+    "require": {
+        "typo3/neos-nodetypes": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Dotpulse\\MediaRow": "Classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "dotpulse AG ppa. webexcess GmbH",
+            "email": "neos+dotpulse-opensource@webexcess.ch",
+            "homepage": "http://webexcess.ch",
+            "role": "Developer"
+        }
+    ]
+}

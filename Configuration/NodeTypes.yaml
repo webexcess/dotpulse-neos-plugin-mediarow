@@ -1,0 +1,16 @@
+'Dotpulse.MediaRow:Container':
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
+  ui:
+    label: i18n
+    group: general
+    icon: icon-picture
+    inlineEditable: TRUE
+  childNodes:
+    media:
+      type: 'TYPO3.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': FALSE
+          'TYPO3.Neos.NodeTypes:Image': TRUE
+          'Jonnitto.PrettyEmbedYoutube:YouTube': TRUE

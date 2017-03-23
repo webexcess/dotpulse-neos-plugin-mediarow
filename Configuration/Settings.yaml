@@ -1,0 +1,19 @@
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Dotpulse.MediaRow': TRUE
+
+    userInterface:
+      translation:
+        autoInclude:
+          'Dotpulse.MediaRow': ['NodeTypes/*']
+
+Dotpulse:
+  MediaRow:
+    baseWith: 2560
+    includeCSS: TRUE
+    class:
+      container: container
+      row: dotpulse-mediarow--row
+      col: dotpulse-mediarow--col
