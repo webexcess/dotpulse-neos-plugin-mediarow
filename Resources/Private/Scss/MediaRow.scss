@@ -4,7 +4,7 @@ $mediarow-class-col: dotpulse-mediarow--col !default;
 $mediarow-gutter: 30px !default;
 
 @media (min-width: $mediarow-breakpoint) {
-	.dotpulse-mediarow-container + .dotpulse-mediarow-container  {
+	.dotpulse-mediarow-container + .dotpulse-mediarow-container {
 		margin-top: 1.5rem;
 	}
 
@@ -16,7 +16,7 @@ $mediarow-gutter: 30px !default;
 		margin-left: -$mediarow-gutter / 2;
 		min-height: 3rem;
 
-		&:after {
+		&::after {
 			content: '';
 			display: table;
 			clear: both;
@@ -39,7 +39,7 @@ $mediarow-gutter: 30px !default;
 			display: block;
 			object-fit: contain;
 
-			&[src$=".svg"] {
+			&[src$='.svg'] {
 				object-fit: fill;
 			}
 		}

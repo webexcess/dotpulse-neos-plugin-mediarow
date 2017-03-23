@@ -21,10 +21,10 @@ prototype(Neos:Page) {
 
 prototype(MediaRow:Container) < prototype(Neos:Content) {
 	configuration = ${Configuration.setting('Dotpulse.MediaRow')}
-	@override.configuration = ${this.configuration}
+	@context.configuration = ${this.configuration}
 	hasMediaOrBackend = ${q(node).children().children().is() || node.context.inBackend}
 	container = ${q(node).parent().parent('[instanceof TYPO3.Neos:Document]').is() ? true : false}
-	@override.container = ${this.container}
+	@context.container = ${this.container}
 
 	attributes.class = TypoScript:RawArray {
 		mediarow = ${container ? configuration.class.container : false}
