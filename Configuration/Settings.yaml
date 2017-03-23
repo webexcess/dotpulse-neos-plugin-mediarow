@@ -11,7 +11,7 @@ TYPO3:
 
 Dotpulse:
   MediaRow:
-    baseWith: 2560
+    baseWith: 1440
     includeCSS: FALSE
     class:
       container: container

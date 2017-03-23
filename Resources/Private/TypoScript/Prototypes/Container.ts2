@@ -1,0 +1,95 @@
+prototype(MR:Container) < prototype(Content) {
+	configuration = ${Configuration.setting('Dotpulse.MediaRow')}
+	container = ${q(node).parent().parent('[instanceof TYPO3.Neos:Document]').is() ? true : false}
+	childCount = ${q(node).children('media').children().count()}
+	dimensionsWidth = ${this.childCount ? this.configuration.baseWidth / this.childCount : this.configuration.baseWidth}
+	mode = 'height'
+
+	@context {
+		configuration = ${this.configuration}
+		container = ${this.container}
+		mode = ${this.mode}
+		childCount = ${this.childCount}
+		dimensionsWidth = ${this.dimensionsWidth}
+	}
+
+	hasMediaOrBackend = ${q(node).children().children().is() || node.context.inBackend}
+
+	attributes.class = Fusion:RawArray {
+		mediarow = ${container ? configuration.class.container : false}
+		mode = ${'dotpulse-mediarow--' + mode}
+	}
+
+	media = ContentCollection {
+		nodePath = 'media'
+		attributes.class = Fusion:RawArray {
+			container = ${configuration.class.row}
+		}
+	}
+
+	prototype(Content) {
+		maximumWidth = MR:MediaWidth
+		@context.maximumWidth = ${this.maximumWidth}
+		attributes {
+			class = Fusion:RawArray {
+				mediarow = ${Configuration.setting('Dotpulse.MediaRow.class.col')}
+			}
+			style = MR:MediaStyle
+		}
+	}
+
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		maximumWidth = MR:MediaWidth
+		attributes {
+			class = Fusion:RawArray {
+				mediarow = ${Configuration.setting('Dotpulse.MediaRow.class.col')}
+			}
+			style = MR:MediaStyle
+		}
+	}
+}
+
+prototype(MR:MediaWidth) < prototype(Fusion:Case) {
+	asset = ${q(node).property('image')}
+	@ignoreProperties = ${['asset']}
+	@context.asset = ${this.asset}
+
+	isHeight {
+		condition = ${mode == 'height' && asset}
+		renderer = ${Math.ceil(dimensionsWidth * asset.width / asset.height)}
+	}
+	isWidth {
+		condition = true
+		renderer = ${dimensionsWidth}
+	}
+}
+
+prototype(MR:MediaStyle) < prototype(Fusion:Case) {
+	asset = ${q(node).property('image')}
+	@ignoreProperties = ${['asset']}
+	@context.asset = ${this.asset}
+
+	isHeight {
+		condition = ${mode == 'height' && asset}
+		renderer = MR:MediaFlex
+	}
+	isWidth {
+		condition = true
+		renderer = MR:MediaFlex {
+			relation = 1
+		}
+	}
+
+	@if.hasMode = ${mode && !String.isBlank(mode) ? true : false}
+}
+
+
+prototype(MR:MediaFlex) < prototype(Fusion:Array) {
+	relation = ${asset.width / asset.height}
+	@ignoreProperties = ${['relation']}
+
+	webkitBoxFlex = ${'-webkit-box-flex:' + this.relation + ';'}
+	webkitFlex = ${'-webkit-flex:' + this.relation + ' 1 0%;'}
+	msFlex = ${'-ms-flex:' + this.relation + ' 1 0%;'}
+	flex = ${'flex:' + this.relation + ' 1 0%;'}
+}

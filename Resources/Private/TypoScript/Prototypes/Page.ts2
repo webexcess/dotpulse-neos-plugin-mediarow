@@ -1,0 +1,15 @@
+prototype(Page) {
+	head {
+		mediaRow = Fusion:Tag {
+			tagName = 'link'
+			attributes {
+				rel = 'stylesheet'
+				href = Fusion:ResourceUri {
+					path = 'resource://Dotpulse.MediaRow/Public/Main.css'
+				}
+			}
+		}
+		mediaRow.@if.isEnabled = ${Configuration.setting('Dotpulse.MediaRow.includeCSS')}
+		mediaRow.@if.hasElementOrIsBackend = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Dotpulse.MediaRow:Container]').is() || node.context.inBackend}
+	}
+}
