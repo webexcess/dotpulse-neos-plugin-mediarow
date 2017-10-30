@@ -1,6 +1,6 @@
 prototype(MR:Container) < prototype(Content) {
 	configuration = ${Configuration.setting('Dotpulse.MediaRow')}
-	container = ${q(node).parent().parent('[instanceof TYPO3.Neos:Document]').is() ? true : false}
+	container = ${q(node).parent().parent('[instanceof Neos.Neos:Document]').is() ? true : false}
 	childCount = ${q(node).children('media').children().count()}
 	dimensionsWidth = ${this.childCount ? this.configuration.baseWidth / this.childCount : this.configuration.baseWidth}
 	mode = 'height'

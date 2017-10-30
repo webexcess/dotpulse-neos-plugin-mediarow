@@ -10,6 +10,6 @@ prototype(Page) {
 			}
 		}
 		mediaRow.@if.isEnabled = ${Configuration.setting('Dotpulse.MediaRow.includeCSS')}
-		mediaRow.@if.hasElementOrIsBackend = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Dotpulse.MediaRow:Container]').is() || node.context.inBackend}
+		mediaRow.@if.hasElementOrIsBackend = ${q(node).children('[instanceof Neos.Neos:ContentCollection]').find('[instanceof Dotpulse.MediaRow:Container]').is() || node.context.inBackend}
 	}
 }
