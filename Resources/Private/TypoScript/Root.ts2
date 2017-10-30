@@ -1,4 +1,0 @@
-namespace: Fusion=TYPO3.TypoScript
-namespace: MR=Dotpulse.MediaRow
-
-include: Prototypes/**/*.ts2

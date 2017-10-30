@@ -1,0 +1,4 @@
+namespace: Fusion=Neos.Fusion
+namespace: MR=Dotpulse.MediaRow
+
+include: Prototypes/**/*.fusion

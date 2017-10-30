@@ -1,10 +1,9 @@
 {
     "name": "dotpulse/mediarow",
-    "type": "typo3-flow-plugin",
+    "type": "neos-plugin",
     "description": "Shows media in a row. Use CSS-Flexbox",
-    "version": "2.2.0",
     "require": {
-        "typo3/neos-nodetypes": "2.*"
+        "neos/nodetypes": "3.*"
     },
     "autoload": {
         "psr-0": {
